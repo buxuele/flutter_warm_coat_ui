@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-//import 'package:badges/basges.dart';
+import 'package:badges/badges.dart';
 import './detail_screen.dart';
-import './testScreen.dart';
 
 import '../data/model.dart';       // products, 可以直接用的
 
@@ -29,14 +27,22 @@ class _HomePageState extends State<HomePage> {
                 letterSpacing: 1,
               ),
             ),
+
+
+
             IconButton(
-              icon: Icon(
-                Icons.shopping_basket,
-                size: 30,
-                color: Colors.black87,
+              icon: Badge(
+                badgeContent: Text("1"),
+                badgeColor: Colors.greenAccent,
+                child: Icon(
+                  Icons.shopping_basket,
+                  color: Colors.black87,
+                ),
               ),
-              onPressed: null,
+              iconSize: 30,
+              onPressed: () {},
             ),
+
           ],
         ),
       ),
@@ -55,6 +61,8 @@ class _HomePageState extends State<HomePage> {
             color: Colors.grey,
             child: Stack(
               children: <Widget>[
+
+                // white coat
                 Positioned(
                   // white coat
                   top: 50,
@@ -68,11 +76,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+
+                // text
                 Positioned(
                   left: 12,
                   top: 0,
 
-                  // 使用一大堆的
                   child: Text(
                     "STAY\nWARM\nTHIS FALL",
                     style: TextStyle(
@@ -87,6 +96,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+
+                // dark coat
                 Positioned(
                   // white coat
                   bottom: 0,
@@ -94,38 +105,50 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     height: 270,
                     width: 220,
-                    child: Image.asset(
-                      products[0].imagePath[1],
-                      fit: BoxFit.contain,
+                    child: Hero(
+                      tag: products[0].name,
+                      child: Image.asset(
+                        products[0].imagePath[1],
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Text(
-                "Explore",
-                style: TextStyle(
-                  fontSize: 23,
-                  letterSpacing: 1,
+
+          // explore
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => DetailPage()
+              ));
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Text(
+                  "Explore",
+                  style: TextStyle(
+                    fontSize: 23,
+                    letterSpacing: 1,
+                  ),
                 ),
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_forward,
-                  size: 30,
-                  color: Colors.black87,
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_forward,
+                    size: 30,
+                    color: Colors.black87,
+                  ),
+                  onPressed: () {
+//                    Navigator.of(context).push(MaterialPageRoute(
+//                      builder: (_) => DetailPage()
+//                    ));
+                  },
                 ),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => DetailPage()
-                  ));
-                },
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
