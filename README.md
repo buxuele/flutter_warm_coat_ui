@@ -1,10 +1,14 @@
 # warm_coat_ui
 
-A new Flutter ui app. based on this design: ![coat](./target.png)
+A new Flutter ui app. based on this design: 
 This is a test app. All images come from  [HM.](https://www2.hm.com/zh_cn/index.html)
+![coat](./target.png)
+
 
 ScreenShots:
-![1](screenshot1.jpg){width="50%"}![2](screenshot3.jpg){width="50%"}![3](screenshot2.jpg){width="50%"}
+![1](screenshot1.jpg)
+![2](screenshot3.jpg)
+![3](screenshot2.jpg)
 
 
 # Note:
